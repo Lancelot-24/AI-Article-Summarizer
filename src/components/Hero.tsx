@@ -19,7 +19,7 @@ const Hero = () => {
         </h1>
 
         <h2 className="desc">
-            An article, website, or document summarizer that uses the power of OpenAI's GPT-4 to summarize any text you give it.
+            Summarize any article or website with the power of OpenAI's GPT-4 to summarize any text you give it.
         </h2>
     </header>
   )
