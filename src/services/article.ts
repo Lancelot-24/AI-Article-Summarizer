@@ -1,17 +1,23 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query/react';
-import process from 'process';
-
-const apiKey = process.env.RAPID_API_KEY;//import.meta.env.RAPID_API_KEY;
+import type { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query/react';
 
 export const isFetchBaseQueryErrorType = (error: any): error is FetchBaseQueryError => 'status' in error
+
+const apiKeyUrl = `/.netlify/functions/apiKey`;
+
+export const getKey = async () => {
+    const key = await fetch(apiKeyUrl).then((response) => response.json())//.then((data) => data.key);
+    
+    return key;
+}
+const key = await getKey().then((data) => data.key);
 
 export const articleApi = createApi({ 
     reducerPath: 'articleApi',
     baseQuery: fetchBaseQuery({ 
         baseUrl: 'https://article-extractor-and-summarizer.p.rapidapi.com/',
         prepareHeaders: (headers) => {
-        headers.set('X-RapidAPI-Key', `${apiKey}`);
+        headers.set('X-RapidAPI-Key', `${key}`);
         headers.set('X-RapidAPI-Host', 'article-extractor-and-summarizer.p.rapidapi.com');
 
         return headers;
