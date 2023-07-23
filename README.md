@@ -1,4 +1,8 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite + Redux 
+
+# [Try it here](https://summarize-using-gpt4.netlify.app/)
+Note: API has a 50-use limit per month.
+
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
