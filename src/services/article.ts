@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query/react';
-//const rapidApiKey = import.meta.env.VITE_RAPID_API_KEY;
+import process from 'process';
+
+const {RAPID_API_KEY} = process.env;//import.meta.env.RAPID_API_KEY;
 
 export const isFetchBaseQueryErrorType = (error: any): error is FetchBaseQueryError => 'status' in error
 
@@ -9,7 +11,7 @@ export const articleApi = createApi({
     baseQuery: fetchBaseQuery({ 
         baseUrl: 'https://article-extractor-and-summarizer.p.rapidapi.com/',
         prepareHeaders: (headers) => {
-        headers.set('X-RapidAPI-Key', 'd9c6dd38d1msh8f74d06c0e8db18p14b102jsn3ceedeedb00c');
+        headers.set('X-RapidAPI-Key', `${RAPID_API_KEY}`);
         headers.set('X-RapidAPI-Host', 'article-extractor-and-summarizer.p.rapidapi.com');
 
         return headers;
