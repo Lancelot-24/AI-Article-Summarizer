@@ -6,7 +6,7 @@ export const isFetchBaseQueryErrorType = (error: any): error is FetchBaseQueryEr
 const apiKeyUrl = `/.netlify/functions/apiKey`;
 
 export const getKey = async () => {
-    const key = await fetch(apiKeyUrl).then((response) => response.json())//.then((data) => data.key);
+    const key = await fetch(apiKeyUrl).then((response) => response.json())
     
     return key;
 }
